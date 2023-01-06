@@ -9,6 +9,11 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "CharacterBody2D",
+"class": &"CharacterBase",
+"language": &"GDScript",
+"path": "res://Characters/character_base.gd"
+}, {
 "base": "Area2D",
 "class": &"Fruit",
 "language": &"GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[{
 "path": "res://Characters/Player/player.gd"
 }]
 _global_script_class_icons={
+"CharacterBase": "",
 "Fruit": "",
 "Player": ""
 }

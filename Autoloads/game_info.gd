@@ -11,5 +11,6 @@ var fruit: int = 0 :
 		fruit = value
 		if player != null:
 			player.update_gui()
+			sfx_pickup.play()
 	get:
 		return fruit
