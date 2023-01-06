@@ -1,0 +1,13 @@
+idle : 0 - 10
+
+Run : 11 - 22
+
+Jump : 23
+
+Fall : 24
+
+Double Jump : 25 - 30
+
+Wall Jump: 31- 35
+
+Hit: 36 - 42

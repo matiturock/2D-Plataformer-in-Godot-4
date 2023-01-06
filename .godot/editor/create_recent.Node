@@ -1,0 +1,16 @@
+AudioStreamPlayer
+Node
+AudioStreamPlayer2D
+HBoxContainer
+VBoxContainer
+Sprite2D
+Label
+CanvasLayer
+AnimationPlayer
+CollisionShape2D
+Area2D
+Camera2D
+ParallaxLayer
+ParallaxBackground
+TileMap
+CharacterBody2D

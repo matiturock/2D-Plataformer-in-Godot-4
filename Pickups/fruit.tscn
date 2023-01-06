@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://cofffsl1s7ken"]
+
+[ext_resource type="Script" path="res://Pickups/fruit.gd" id="1_ygif2"]
+[ext_resource type="Texture2D" uid="uid://c4ig61vbhtiah" path="res://Assets_PixelAdventure/Items/Fruits/Melon.png" id="2_4fqwe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m8phq"]
+radius = 27.0185
+
+[sub_resource type="Animation" id="Animation_r4yfa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_cpqg7"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_75p36"]
+_data = {
+"RESET": SubResource("Animation_r4yfa"),
+"idle": SubResource("Animation_cpqg7")
+}
+
+[node name="Fruit" type="Area2D"]
+script = ExtResource("1_ygif2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m8phq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4fqwe")
+hframes = 17
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_75p36")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

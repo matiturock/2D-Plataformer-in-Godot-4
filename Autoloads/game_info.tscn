@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7wxg5k1lduke"]
+
+[ext_resource type="Script" path="res://Autoloads/game_info.gd" id="1_vktqb"]
+[ext_resource type="AudioStream" uid="uid://di2p4xwb1340l" path="res://Assets_PixelAdventure/Sounds/confirmation_002.ogg" id="2_8kci7"]
+
+[node name="GameInfo" type="Node"]
+script = ExtResource("1_vktqb")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="SFX_Pickup" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("2_8kci7")
+volume_db = -12.0
+bus = &"SFX"
+
+[node name="SFX_Jump" type="AudioStreamPlayer" parent="SFX"]

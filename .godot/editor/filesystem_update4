@@ -1,0 +1,10 @@
+res://Pickups/fruta.tscn
+res://Pickups/fruta.gd
+res://Characters/Player/player.tscn
+res://Characters/Player/player.gd
+res://Levels/main_scene.tscn
+res://Pickups/fruit.tscn
+res://Pickups/fruit.gd
+res://Autoloads/game_info.tscn
+res://Autoloads/game_info.gd
+res://default_bus_layout.tres
