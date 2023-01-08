@@ -1,9 +1,6 @@
 class_name EnemyPig extends CharacterBase
 
-enum STATE {
-	WALK,
-	ANGRY
-}
+enum STATE { WALK, ANGRY }
 
 var direction: float = -1.0
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -17,6 +14,7 @@ var target_player: Player = null
 @onready var ray_cast_2d_wall: RayCast2D = $RayCasts/RayCast2DWall
 @onready var change_direction_timer: Timer = $RayCasts/ChangeDirectionTimer
 @onready var ray_cast_2d_player_detector: RayCast2D = $RayCasts/RayCast2DPlayerDetector
+@onready var area_2d_player_damage: Area2D = $Area2DPlayerDamage
 
 func _ready() -> void:
 	state_controller(STATE.WALK)
@@ -62,3 +60,14 @@ func state_controller(new_state: STATE) -> void:
 			speed = speed_boost
 		_:
 			printerr("Enemy state error")
+
+func take_damage(damage: int = 1):
+	life -= damage
+	GameInfo.sfx_hit.play()
+	if life <= 0:
+		animation_player.play("hurt")
+
+
+func _on_area_2d_player_damage_body_entered(body: Node2D) -> void:
+	if body is Player and body.has_method("take_damage"):
+		body.take_damage()

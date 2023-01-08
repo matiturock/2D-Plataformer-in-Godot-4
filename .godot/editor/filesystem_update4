@@ -8,3 +8,6 @@ res://Characters/character_base.tscn
 res://Characters/Player/player.tscn
 res://Characters/character_base.gd
 res://Characters/Player/player.gd
+res://Autoloads/game_info.gd
+res://GUI/player_gui.tscn
+res://GUI/player_gui.gd
