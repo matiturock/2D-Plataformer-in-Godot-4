@@ -1,4 +1,8 @@
 class_name CharacterBase extends CharacterBody2D
 
-var speed: float = 0.0
-var life: int = 0
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+
+@export var life: int = 0
+@export var speed: float = 100

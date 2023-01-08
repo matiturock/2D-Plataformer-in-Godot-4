@@ -102,9 +102,10 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 100
 collision_mask = 2
 script = ExtResource("1_v6s2b")
-SPEED = 120.0
+speed = 150.0
 
 [node name="PlayerGUI" type="CanvasLayer" parent="."]
 layer = 2
@@ -121,9 +122,7 @@ texture = ExtResource("3_ct1sl")
 hframes = 17
 
 [node name="LabelFruit" type="Label" parent="PlayerGUI/VBoxContainer"]
-offset_top = 7.0
-offset_right = 10.0
-offset_bottom = 33.0
+layout_mode = 2
 text = "0"
 label_settings = ExtResource("3_6wly4")
 
@@ -151,3 +150,7 @@ position_smoothing_enabled = true
 [node name="SFXJump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_qb8cl")
 bus = &"SFX"
+
+[node name="RayCasts" type="Node2D" parent="."]
+
+[node name="RayCast2DDamage" type="RayCast2D" parent="RayCasts"]

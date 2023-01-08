@@ -14,6 +14,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://Characters/character_base.gd"
 }, {
+"base": "CharacterBase",
+"class": &"EnemyPig",
+"language": &"GDScript",
+"path": "res://Characters/Enemies/enemy_pig.gd"
+}, {
 "base": "Area2D",
 "class": &"Fruit",
 "language": &"GDScript",
@@ -26,6 +31,7 @@ _global_script_classes=[{
 }]
 _global_script_class_icons={
 "CharacterBase": "",
+"EnemyPig": "",
 "Fruit": "",
 "Player": ""
 }

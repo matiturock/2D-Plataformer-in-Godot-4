@@ -1,6 +1,6 @@
 class_name Fruit extends Area2D
 
-@onready var sfx_pickup: AudioStreamPlayer = $SFXPickup
+@onready var sfx_pickup: AudioStreamPlayer = GameInfo.sfx_pickup
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
