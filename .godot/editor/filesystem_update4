@@ -1,12 +1,3 @@
-res://Characters/character_base.tscn
+res://Elements/goal.tscn
 res://Resources/label_settings.tres
-res://Characters/character_base.gd
-res://Characters/Enemies/enemy_pig.tscn
-res://Characters/Enemies/enemy_pig.gd
-res://Characters/Player/player.tscn
-res://Characters/Player/player.gd
-res://Autoloads/game_info.tscn
-res://Levels/main_scene.tscn
-res://Pickups/fruit.tscn
-res://GUI/player_gui.tscn
-res://GUI/player_gui.gd
+res://Levels/Tilemaps/main_tail_set.tres

@@ -1,3 +1,7 @@
+res://Resources/Fonts
+res://Levels
+res://Elements
+res://Levels/Tilemaps
 res://GUI
 res://Characters/Enemies
 res://Characters
@@ -6,4 +10,3 @@ res://Assets_PixelAdventure/Items/Fruits
 res://Autoloads
 res://Pickups
 res://Characters/Player
-res://Levels

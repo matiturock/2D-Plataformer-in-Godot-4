@@ -28,12 +28,18 @@ _global_script_classes=[{
 "class": &"Player",
 "language": &"GDScript",
 "path": "res://Characters/Player/player.gd"
+}, {
+"base": "Node",
+"class": &"Shaker",
+"language": &"GDScript",
+"path": "res://addons/shaker/shaker.gd"
 }]
 _global_script_class_icons={
 "CharacterBase": "",
 "EnemyPig": "",
 "Fruit": "",
-"Player": ""
+"Player": "",
+"Shaker": "res://addons/shaker/shaker.svg"
 }
 
 [application]
@@ -54,6 +60,10 @@ window/size/viewport_height=240
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom_font="res://Resources/Fonts/default_font.tres"
 
 [input]
 
