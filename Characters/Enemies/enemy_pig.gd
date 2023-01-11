@@ -1,6 +1,6 @@
 class_name EnemyPig extends CharacterBase
 
-enum STATE { WALK, ANGRY }
+enum STATE { WALK, ANGRY, DEAD }
 
 var direction: float = -1.0
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -58,6 +58,13 @@ func state_controller(new_state: STATE) -> void:
 		STATE.ANGRY:
 			animation_player.play("run_angry")
 			speed = speed_boost
+		STATE.DEAD:
+			collision_shape_2d.set_deferred("disabled", true)
+			area_2d_player_damage.set_deferred("disabled", true)
+			GameInfo.sfx_hit.play()
+			animation_player.play("hurt")
+			await animation_player.animation_finished
+			queue_free()
 		_:
 			printerr("Enemy state error")
 
@@ -65,9 +72,9 @@ func take_damage(damage: int = 1):
 	life -= damage
 	GameInfo.sfx_hit.play()
 	if life <= 0:
-		animation_player.play("hurt")
+		state_controller(STATE.DEAD)
 
 
 func _on_area_2d_player_damage_body_entered(body: Node2D) -> void:
-	if body is Player and body.has_method("take_damage"):
-		body.take_damage()
+	if body is Player:
+		body.take_damage(damage)

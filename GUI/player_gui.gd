@@ -7,9 +7,15 @@ var fruits_number: int = 0:
 	get:
 		return fruits_number
 
-var life_number: int = 1:
+var life_value: int:
 	set(value):
-		life_number = value
-		$VBoxContainerLife/LabelNumber.text = str(life_number)
+		life_value = value
+		$Sprite2DBarLife/ProgressBarLife.value = value
 	get:
-		return life_number
+		return life_value
+
+var max_life_value: int:
+	set(value):
+		$Sprite2DBarLife/ProgressBarLife.max_value = value
+	get:
+		return max_life_value

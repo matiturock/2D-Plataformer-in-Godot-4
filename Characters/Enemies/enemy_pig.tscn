@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Characters/Enemies/enemy_pig.gd" id="2_nee8a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tk846"]
-size = Vector2(20, 24)
+size = Vector2(19, 24)
 
 [sub_resource type="Animation" id="Animation_oyrni"]
 length = 0.001
@@ -113,7 +113,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rdwl"]
-size = Vector2(24, 24)
+size = Vector2(24, 17)
 
 [node name="EnemyPig" groups=["enemies"] instance=ExtResource("1_d4qk8")]
 z_index = 50
@@ -130,7 +130,7 @@ hframes = 9
 vframes = 6
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 2)
+position = Vector2(0.5, 2)
 shape = SubResource("RectangleShape2D_tk846")
 
 [node name="AnimationPlayer" parent="." index="2"]
@@ -161,7 +161,7 @@ one_shot = true
 [node name="Area2DPlayerDamage" type="Area2D" parent="." index="4"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DPlayerDamage" index="0"]
-position = Vector2(0, 2)
+position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_5rdwl")
 
 [connection signal="timeout" from="RayCasts/ChangeDirectionTimer" to="." method="_on_change_direction_timer_timeout"]

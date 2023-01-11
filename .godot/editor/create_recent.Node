@@ -1,11 +1,12 @@
+Node
 Sprite2D
+ProgressBar
 VBoxContainer
 CollisionShape2D
 Area2D
 AudioStreamPlayer
 RayCast2D
 Node2D
-Node
 Timer
 CharacterBase
 AnimationPlayer

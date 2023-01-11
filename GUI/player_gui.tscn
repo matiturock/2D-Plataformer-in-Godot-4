@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca6c5awqc8m0q"]
+[gd_scene load_steps=7 format=3 uid="uid://ca6c5awqc8m0q"]
 
 [ext_resource type="Script" path="res://GUI/player_gui.gd" id="1_aynj6"]
 [ext_resource type="Texture2D" uid="uid://c4ig61vbhtiah" path="res://Assets_PixelAdventure/Items/Fruits/Melon.png" id="1_jel02"]
 [ext_resource type="LabelSettings" uid="uid://bty7885aysi5e" path="res://Resources/label_settings.tres" id="2_8u666"]
+[ext_resource type="Texture2D" uid="uid://ckaore37h130l" path="res://Assets_PixelAdventure/Menu/UI/lifebar-1.png" id="4_3c7g4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8q4f4"]
+bg_color = Color(0.683294, 0.47109, 0.41804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ts24q"]
+bg_color = Color(0.709804, 0.0588235, 0.168627, 1)
 
 [node name="PlayerGUI" type="CanvasLayer"]
 layer = 2
@@ -28,23 +35,17 @@ offset_bottom = 33.0
 text = "0"
 label_settings = ExtResource("2_8u666")
 
-[node name="VBoxContainerLife" type="HBoxContainer" parent="."]
-offset_left = 11.0
-offset_right = 84.0
-offset_bottom = 40.0
-size_flags_horizontal = 0
+[node name="Sprite2DBarLife" type="Sprite2D" parent="."]
+position = Vector2(57, 25)
+texture = ExtResource("4_3c7g4")
 
-[node name="Label" type="Label" parent="VBoxContainerLife"]
-offset_top = 7.0
-offset_right = 46.0
-offset_bottom = 33.0
-text = "Vidas:"
-label_settings = ExtResource("2_8u666")
-
-[node name="LabelNumber" type="Label" parent="VBoxContainerLife"]
-offset_left = 50.0
-offset_top = 7.0
-offset_right = 60.0
-offset_bottom = 33.0
-text = "0"
-label_settings = ExtResource("2_8u666")
+[node name="ProgressBarLife" type="ProgressBar" parent="Sprite2DBarLife"]
+offset_left = -31.0
+offset_top = -2.0
+offset_right = 44.0
+theme_override_styles/background = SubResource("StyleBoxFlat_8q4f4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ts24q")
+max_value = 10.0
+step = 1.0
+value = 5.0
+show_percentage = false

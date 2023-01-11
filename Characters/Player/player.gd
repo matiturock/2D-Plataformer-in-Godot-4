@@ -1,10 +1,11 @@
 class_name Player extends CharacterBody2D
 
-enum STATE { LIVE, HURT, DEAD, INVINCIBLE }
+enum State { LIVE, HURT, DEAD, INVINCIBLE }
 
-@export var life: int = 3:
+@export var life: int = 10:
 	set(value):
 		life = value
+		update_gui()
 		if life < 0:
 			life = 0
 	get:
@@ -15,21 +16,23 @@ enum STATE { LIVE, HURT, DEAD, INVINCIBLE }
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction: float = 0.0
-var current_state: STATE
+var current_State: State
 var can_take_input: bool = true:
 	set(value):
 		can_take_input = value
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var sfx_jump: AudioStreamPlayer2D = $SFXJump
+@onready var sfx_jump: AudioStreamPlayer2D = $SFX/SFXJump
+@onready var sfx_hit: AudioStreamPlayer2D = $SFX/SFXHit
 @onready var ray_casts_damage: Node2D = $RayCastsDamage
 @onready var player_gui: CanvasLayer = $PlayerGUI
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 # Methdos
 func _ready() -> void:
-	current_state = STATE.LIVE
+	current_State = State.LIVE
+	player_gui.max_life_value = life
 	update_gui()
 	GameInfo.player = self
 
@@ -79,36 +82,43 @@ func add_fuit() -> void:
 	print(GameInfo.fruits_number)
 	update_gui()
 
-func state_controller(new_state: STATE) -> void:
-	match new_state:
-		STATE.LIVE:
+func State_controller(new_State: State) -> void:
+	match new_State:
+		State.LIVE:
 			can_take_input = true
-		STATE.HURT:
+		State.HURT:
 			can_take_input = false
 			animation_player.play("hurt")
 			await animation_player.animation_finished
-			state_controller(STATE.LIVE)
-		STATE.INVINCIBLE:
+			State_controller(State.LIVE)
+		State.INVINCIBLE:
 			can_take_input = true
 			var current_modulate: Color = sprite_2d.modulate
 			sprite_2d.modulate = Color.RED
 			await get_tree().create_timer(1.5).timeout
 			sprite_2d.modulate = current_modulate
-			state_controller(STATE.LIVE)
-		STATE.DEAD:
+			State_controller(State.LIVE)
+		State.DEAD:
+			can_take_input = false
+			GameInfo.sfx_hit.play()
+			animation_player.play("hurt")
+			await animation_player.animation_finished
 			get_tree().reload_current_scene()
 		_:
-			printerr("Error in player state")
+			printerr("Error in player State")
 
 func update_gui() -> void:
-	player_gui.life_number = life
+	player_gui.life_value = life
 	player_gui.fruits_number = GameInfo.fruits_number
 
 func take_damage(damage: int = 1) -> void:
-	GameInfo.sfx_hit.play()
+	if current_State in [State.HURT, State.INVINCIBLE]:
+		return
+	
 	life -= damage
-	state_controller(STATE.HURT)
+	print("Life: " + str(life))
+	State_controller(State.HURT)
 	update_gui()
 	
 	if life <= 0:
-		state_controller(STATE.DEAD)
+		State_controller(State.DEAD)

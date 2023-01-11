@@ -6,3 +6,4 @@ class_name CharacterBase extends CharacterBody2D
 
 @export var life: int = 0
 @export var speed: float = 100
+@export var damage: int = 1
