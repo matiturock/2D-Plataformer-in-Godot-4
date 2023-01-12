@@ -33,13 +33,37 @@ _global_script_classes=[{
 "class": &"Shaker",
 "language": &"GDScript",
 "path": "res://addons/shaker/shaker.gd"
+}, {
+"base": "Node2D",
+"class": &"Sierra",
+"language": &"GDScript",
+"path": "res://Elements/sierra.gd"
+}, {
+"base": "Path2D",
+"class": &"SierraMovil",
+"language": &"GDScript",
+"path": "res://Elements/saw_molvible.gd"
+}, {
+"base": "Node",
+"class": &"State",
+"language": &"GDScript",
+"path": "res://Scripts/States/states.gd"
+}, {
+"base": "Node",
+"class": &"StateMachine",
+"language": &"GDScript",
+"path": "res://Scripts/States/state_machine.gd"
 }]
 _global_script_class_icons={
 "CharacterBase": "",
 "EnemyPig": "",
 "Fruit": "",
 "Player": "",
-"Shaker": "res://addons/shaker/shaker.svg"
+"Shaker": "res://addons/shaker/shaker.svg",
+"Sierra": "",
+"SierraMovil": "",
+"State": "",
+"StateMachine": ""
 }
 
 [application]

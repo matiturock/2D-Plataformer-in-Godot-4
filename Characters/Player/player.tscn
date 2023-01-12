@@ -136,6 +136,18 @@ collision_mask = 14
 script = ExtResource("1_v6s2b")
 speed = 150.0
 
+[node name="StateMachine" type="Node" parent="."]
+
+[node name="Idle" type="Node" parent="StateMachine"]
+
+[node name="Run" type="Node" parent="StateMachine"]
+
+[node name="JumpUp" type="Node" parent="StateMachine"]
+
+[node name="JumpDown" type="Node" parent="StateMachine"]
+
+[node name="Dash" type="Node" parent="StateMachine"]
+
 [node name="PlayerGUI" parent="." instance=ExtResource("2_ph2pg")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

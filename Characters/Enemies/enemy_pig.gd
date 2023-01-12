@@ -48,9 +48,6 @@ func _process(_delta: float) -> void:
 	
 	sprite_2d.flip_h = direction > 0
 
-func _on_change_direction_timer_timeout() -> void:
-	can_change_direction = true
-
 func state_controller(new_state: STATE) -> void:
 	match new_state:
 		STATE.WALK:
@@ -74,7 +71,9 @@ func take_damage(damage: int = 1):
 	if life <= 0:
 		state_controller(STATE.DEAD)
 
-
 func _on_area_2d_player_damage_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.take_damage(damage)
+
+func _on_change_direction_timer_timeout() -> void:
+	can_change_direction = true

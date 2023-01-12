@@ -2,6 +2,8 @@ class_name Player extends CharacterBody2D
 
 enum State { LIVE, HURT, DEAD, INVINCIBLE }
 
+const MAX_VELOCITY_Y: float = 250
+
 @export var life: int = 10:
 	set(value):
 		life = value
@@ -52,6 +54,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		velocity.y = clamp(velocity.y, jump_velocity, MAX_VELOCITY_Y)
 
 	if not can_take_input:
 		return

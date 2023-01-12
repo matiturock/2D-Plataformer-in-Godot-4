@@ -1,3 +1,15 @@
-res://Elements/goal.tscn
+res://Elements/sierra.tscn
 res://Resources/label_settings.tres
 res://Levels/Tilemaps/main_tail_set.tres
+res://Elements/sierra.gd
+res://Levels/main_scene.tscn
+res://Elements/saw_molvible.tscn
+res://Elements/plataform_path_follow.tscn
+res://Elements/plataform_path_follow.gd
+res://Elements/saw_molvible.gd
+res://Autoloads/game_info.tscn
+res://Elements/goal.tscn
+res://Characters/Enemies/enemy_pig.tscn
+res://Characters/Player/player.tscn
+res://Scripts/States/states.gd
+res://Scripts/States/state_machine.gd

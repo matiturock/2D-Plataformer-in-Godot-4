@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7ptg1wn8dd50"]
+
+[ext_resource type="Script" path="res://Elements/sierra.gd" id="1_7b2ik"]
+[ext_resource type="Texture2D" uid="uid://5yqlida7hamy" path="res://Assets_PixelAdventure/Traps/Saw/Off.png" id="1_vai7p"]
+[ext_resource type="PackedScene" uid="uid://3tg3yg6eqatp" path="res://Utils/area_2d_player_damage.tscn" id="2_xgt8x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ogrwd"]
+radius = 16.1245
+
+[node name="Sierra" type="Node2D"]
+script = ExtResource("1_7b2ik")
+
+[node name="OffSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vai7p")
+
+[node name="Area2DPlayerDamage" parent="." instance=ExtResource("2_xgt8x")]
+
+[node name="CollisionShape2D" parent="Area2DPlayerDamage" index="0"]
+shape = SubResource("CircleShape2D_ogrwd")
+
+[connection signal="body_entered" from="Area2DPlayerDamage" to="." method="_on_area_2d_player_damage_body_entered"]
+
+[editable path="Area2DPlayerDamage"]

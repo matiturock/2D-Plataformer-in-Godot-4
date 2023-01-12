@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cykmp5jgrtiq7"]
+[gd_scene load_steps=17 format=3 uid="uid://cykmp5jgrtiq7"]
 
 [ext_resource type="PackedScene" uid="uid://buuomd30sfsr6" path="res://Characters/Player/player.tscn" id="2_0804l"]
 [ext_resource type="TileSet" uid="uid://cfmfkx08hgbb4" path="res://Levels/Tilemaps/main_tail_set.tres" id="2_afuld"]
@@ -6,12 +6,21 @@
 [ext_resource type="Script" path="res://Levels/CloudLayer.gd" id="4_i2en7"]
 [ext_resource type="Texture2D" uid="uid://d02l7nnnfajd3" path="res://Assets_PixelAdventure/Parallax/parallax-01.png" id="4_rhwy2"]
 [ext_resource type="Texture2D" uid="uid://cqgs3aseyvj8m" path="res://Assets_PixelAdventure/Parallax/parallax-02.png" id="5_1egxp"]
+[ext_resource type="PackedScene" uid="uid://b7ptg1wn8dd50" path="res://Elements/sierra.tscn" id="6_oqo0l"]
 [ext_resource type="Texture2D" uid="uid://cvngflsps17db" path="res://Assets_PixelAdventure/Parallax/parallax-03.png" id="6_siwp8"]
 [ext_resource type="Texture2D" uid="uid://owlwdggvbxt3" path="res://Assets_PixelAdventure/Parallax/parallax-04.png" id="7_6e8ip"]
+[ext_resource type="PackedScene" uid="uid://b818bf2ooooqo" path="res://Elements/saw_molvible.tscn" id="7_bu13k"]
 [ext_resource type="PackedScene" uid="uid://cofffsl1s7ken" path="res://Pickups/fruit.tscn" id="9_kb4g0"]
 [ext_resource type="PackedScene" uid="uid://c0qlono3kr04o" path="res://Characters/Enemies/enemy_pig.tscn" id="10_f6kqs"]
 [ext_resource type="PackedScene" uid="uid://cysng7i3yjj31" path="res://Elements/goal.tscn" id="11_m4qth"]
 [ext_resource type="FontFile" uid="uid://31nx01iuek7f" path="res://Resources/Fonts/default_font.tres" id="12_c6lqr"]
+[ext_resource type="PackedScene" uid="uid://blv2cbyh3ec76" path="res://Elements/plataform_path_follow.tscn" id="13_xj2p8"]
+
+[sub_resource type="Curve2D" id="Curve2D_bs8yi"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 150, 48, 0, 0, 0, 0, 149, 4)
+}
+point_count = 3
 
 [node name="MainScene" type="Node"]
 
@@ -40,6 +49,30 @@ position = Vector2(240, -38)
 [node name="EnemyPig" parent="Enemies" instance=ExtResource("10_f6kqs")]
 position = Vector2(-28, -15)
 speed_boost = 120.0
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="PlatformPathFollow" parent="Platforms" instance=ExtResource("13_xj2p8")]
+position = Vector2(-75, -62)
+
+[node name="Path2D" parent="Platforms/PlatformPathFollow" index="0"]
+curve = SubResource("Curve2D_bs8yi")
+
+[node name="PathFollow2D" parent="Platforms/PlatformPathFollow/Path2D" index="0"]
+position = Vector2(56.7352, 18.1553)
+rotation = 0.309703
+progress = 59.5728
+
+[node name="Platform" parent="Platforms/PlatformPathFollow/Path2D" index="1"]
+position = Vector2(57.3673, 18.3575)
+
+[node name="Traps" type="Node" parent="."]
+
+[node name="Sierra" parent="Traps" instance=ExtResource("6_oqo0l")]
+position = Vector2(-116, -103)
+
+[node name="SawMolvible" parent="Traps" instance=ExtResource("7_bu13k")]
+speed = 0.551
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -94,3 +127,5 @@ offset_right = -80.0
 offset_bottom = -80.0
 theme_override_fonts/font = ExtResource("12_c6lqr")
 text = "asdfads"
+
+[editable path="Platforms/PlatformPathFollow"]

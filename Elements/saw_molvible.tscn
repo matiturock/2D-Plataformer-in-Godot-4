@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b818bf2ooooqo"]
+
+[ext_resource type="Script" path="res://Elements/saw_molvible.gd" id="1_sa7qo"]
+[ext_resource type="PackedScene" uid="uid://b7ptg1wn8dd50" path="res://Elements/sierra.tscn" id="1_wuxd2"]
+
+[sub_resource type="Curve2D" id="Curve2D_g4kcs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -89, -120, 0, 0, 0, 0, -30, -77, 0, 0, 0, 0, 15, -112)
+}
+point_count = 3
+
+[node name="SawMolvible" type="Path2D"]
+curve = SubResource("Curve2D_g4kcs")
+script = ExtResource("1_sa7qo")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+
+[node name="Sierra" parent="PathFollow2D" instance=ExtResource("1_wuxd2")]

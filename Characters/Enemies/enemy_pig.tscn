@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0qlono3kr04o"]
+[gd_scene load_steps=13 format=3 uid="uid://c0qlono3kr04o"]
 
 [ext_resource type="PackedScene" uid="uid://dy4yg8sk3htid" path="res://Characters/character_base.tscn" id="1_d4qk8"]
 [ext_resource type="Texture2D" uid="uid://qh4778c8molj" path="res://Assets_PixelAdventure/Enemies/AngryPig/angryPig.png" id="2_ambf7"]
 [ext_resource type="Script" path="res://Characters/Enemies/enemy_pig.gd" id="2_nee8a"]
+[ext_resource type="PackedScene" uid="uid://3tg3yg6eqatp" path="res://Utils/area_2d_player_damage.tscn" id="4_87i5e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tk846"]
 size = Vector2(19, 24)
@@ -112,8 +113,7 @@ _data = {
 "walk": SubResource("Animation_75qqj")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rdwl"]
-size = Vector2(24, 17)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frfbs"]
 
 [node name="EnemyPig" groups=["enemies"] instance=ExtResource("1_d4qk8")]
 z_index = 50
@@ -158,11 +158,13 @@ target_position = Vector2(-90, 0)
 wait_time = 0.2
 one_shot = true
 
-[node name="Area2DPlayerDamage" type="Area2D" parent="." index="4"]
+[node name="Area2DPlayerDamage" parent="." index="4" instance=ExtResource("4_87i5e")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DPlayerDamage" index="0"]
-position = Vector2(0, 5.5)
-shape = SubResource("RectangleShape2D_5rdwl")
+[node name="CollisionShape2D" parent="Area2DPlayerDamage" index="0"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_frfbs")
 
 [connection signal="timeout" from="RayCasts/ChangeDirectionTimer" to="." method="_on_change_direction_timer_timeout"]
 [connection signal="body_entered" from="Area2DPlayerDamage" to="." method="_on_area_2d_player_damage_body_entered"]
+
+[editable path="Area2DPlayerDamage"]
